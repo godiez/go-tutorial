@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  go-learning:
+    build: .
+    container_name: go-learning
+    volumes:
+      - ./:/go-learning
+    working_dir: /go-learning
+    stdin_open: true
+    tty: true
+    command: /bin/bash
