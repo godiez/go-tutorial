@@ -31,7 +31,7 @@
 
 ### Entering the container
 ```bash
-docker-compose exec go-learning bash
+docker-compose -f docker/docker-compose.yml exec go-learning bash
 ```
 
 ### Running Go programs
