@@ -32,6 +32,8 @@
 ### Entering the container
 ```bash
 docker-compose -f docker/docker-compose.yml exec go-learning bash
+
+docker exec -it go-learning bash
 ```
 
 ### Running Go programs
@@ -46,6 +48,65 @@ The container includes:
 - goimports - for managing imports
 - govulncheck - for security vulnerability checking
 - staticcheck - for static analysis
+
+## Go Modules and Packages
+
+### Local Packages vs Separate Modules
+
+#### Local Packages
+- Same module (single `go.mod` file)
+- Directory structure: `module/package/`
+- Import: `"module-name/package-name"`
+- No additional setup needed
+- Example: `math/` and `hello/` packages
+
+#### Separate Modules  
+- Each has its own `go.mod` file
+- Independent versioning and dependencies
+- Must add as dependency first
+- Example: `goodbye/` module
+
+### Adding Dependencies
+
+#### For Separate Modules
+1. **Add the module to go.mod:**
+   ```bash
+   # Inside container
+   go mod edit -replace module-name=./local-path
+   ```
+
+2. **Download and add the dependency:**
+   ```bash
+   go get module-name
+   ```
+
+3. **Then import in your code:**
+   ```go
+   import "module-name"
+   ```
+
+#### For External Dependencies
+```bash
+# GitHub packages
+go get github.com/user/package
+
+# Specific versions
+go get github.com/user/package@v1.2.3
+```
+
+### Project Structure Example
+```
+project/
+├── go.mod              # Main module: test-package
+├── main.go
+├── math/               # Local package
+│   └── math.go
+├── hello/              # Local package  
+│   └── hello.go
+└── goodbye/            # Separate module
+    ├── go.mod          # Module: goodbye-module
+    └── goodbye.go
+```
 
 ### Additional Resources
 Follow the Effective Go guide at https://go.dev/doc/effective_go
