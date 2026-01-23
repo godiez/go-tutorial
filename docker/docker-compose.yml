@@ -5,7 +5,7 @@ services:
     build: .
     container_name: go-learning
     volumes:
-      - ./:/go-learning
+      - ..:/go-learning
     working_dir: /go-learning
     stdin_open: true
     tty: true

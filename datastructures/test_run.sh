@@ -1,0 +1,11 @@
+#!/bin/bash
+echo 'Testing Data Structures Tutorial'
+echo '================================'
+echo ''
+echo 'Test 1: Compile check'
+go build -o /tmp/datastructures . && echo '✓ Compilation successful' || echo '✗ Compilation failed'
+echo ''
+echo 'Test 2: Run format check'
+gofmt -l . | wc -l | xargs -I {} bash -c 'if [ {} -eq 0 ]; then echo "✓ All files formatted"; else echo "✗ {} files need formatting"; fi'
+echo ''
+echo 'All tests complete!'

@@ -103,10 +103,46 @@ project/
 │   └── math.go
 ├── hello/              # Local package  
 │   └── hello.go
-└── goodbye/            # Separate module
-    ├── go.mod          # Module: goodbye-module
-    └── goodbye.go
+├── goodbye/            # Separate module
+│   ├── go.mod          # Module: goodbye-module
+│   └── goodbye.go
+├── functions/          # Functions examples (defer, multiple returns, etc.)
+└── datastructures/     # Data structures tutorial module
+    ├── main.go
+    ├── arrays_slices.go
+    ├── maps.go
+    ├── structs.go
+    ├── new_vs_make.go
+    └── README.md
 ```
+
+## Learning Modules
+
+### 1. Basic Concepts
+- **hello/**: Hello World package
+- **math/**: Basic math operations
+- **goodbye/**: Example of separate module
+- **main.go**: Main program demonstrating package usage
+
+### 2. Functions
+- **functions/multiple_return.go**: Multiple return values
+- **functions/named_results.go**: Named return values
+- **functions/defer_example.go**: Defer statement usage
+
+### 3. Data Structures (NEW! ⭐)
+Comprehensive tutorial covering:
+- **Arrays & Slices**: Fixed vs dynamic collections
+- **Maps**: Key-value storage and patterns
+- **Structs**: Custom types and methods
+- **new() vs make()**: Memory allocation
+
+**To start the interactive tutorial:**
+```bash
+cd datastructures
+go run .
+```
+
+See `datastructures/OVERVIEW.md` for complete details and `datastructures/QUICK_REFERENCE.md` for a cheat sheet.
 
 ### Additional Resources
 Follow the Effective Go guide at https://go.dev/doc/effective_go
